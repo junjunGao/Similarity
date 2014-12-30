@@ -1,0 +1,325 @@
+	.section	__TEXT,__text,regular,pure_instructions
+	.globl	_isLeapyear
+	.align	4, 0x90
+_isLeapyear:                            ## @isLeapyear
+	.cfi_startproc
+## BB#0:
+	pushq	%rbp
+Ltmp2:
+	.cfi_def_cfa_offset 16
+Ltmp3:
+	.cfi_offset %rbp, -16
+	movq	%rsp, %rbp
+Ltmp4:
+	.cfi_def_cfa_register %rbp
+	movl	$400, %eax              ## imm = 0x190
+	movl	%edi, -8(%rbp)
+	movl	-8(%rbp), %edi
+	movl	%eax, -12(%rbp)         ## 4-byte Spill
+	movl	%edi, %eax
+	cltd
+	movl	-12(%rbp), %edi         ## 4-byte Reload
+	idivl	%edi
+	cmpl	$0, %edx
+	je	LBB0_3
+## BB#1:
+	movl	$4, %eax
+	movl	-8(%rbp), %ecx
+	movl	%eax, -16(%rbp)         ## 4-byte Spill
+	movl	%ecx, %eax
+	cltd
+	movl	-16(%rbp), %ecx         ## 4-byte Reload
+	idivl	%ecx
+	cmpl	$0, %edx
+	jne	LBB0_4
+## BB#2:
+	movl	$100, %eax
+	movl	-8(%rbp), %ecx
+	movl	%eax, -20(%rbp)         ## 4-byte Spill
+	movl	%ecx, %eax
+	cltd
+	movl	-20(%rbp), %ecx         ## 4-byte Reload
+	idivl	%ecx
+	cmpl	$0, %edx
+	je	LBB0_4
+LBB0_3:
+	movl	$1, -4(%rbp)
+	jmp	LBB0_5
+LBB0_4:
+	movl	$0, -4(%rbp)
+LBB0_5:
+	movl	-4(%rbp), %eax
+	popq	%rbp
+	ret
+	.cfi_endproc
+
+	.globl	_main
+	.align	4, 0x90
+_main:                                  ## @main
+	.cfi_startproc
+## BB#0:
+	pushq	%rbp
+Ltmp7:
+	.cfi_def_cfa_offset 16
+Ltmp8:
+	.cfi_offset %rbp, -16
+	movq	%rsp, %rbp
+Ltmp9:
+	.cfi_def_cfa_register %rbp
+	subq	$32, %rsp
+	leaq	L_.str(%rip), %rdi
+	leaq	-8(%rbp), %rsi
+	leaq	-12(%rbp), %rdx
+	leaq	-16(%rbp), %rcx
+	movl	$0, -4(%rbp)
+	movb	$0, %al
+	callq	_scanf
+	cmpl	$1, -12(%rbp)
+	movl	%eax, -24(%rbp)         ## 4-byte Spill
+	jne	LBB1_2
+## BB#1:
+	movl	-16(%rbp), %eax
+	movl	%eax, -20(%rbp)
+	jmp	LBB1_65
+LBB1_2:
+	cmpl	$2, -12(%rbp)
+	jne	LBB1_4
+## BB#3:
+	movl	-16(%rbp), %eax
+	addl	$31, %eax
+	movl	%eax, -20(%rbp)
+	jmp	LBB1_64
+LBB1_4:
+	cmpl	$3, -12(%rbp)
+	jne	LBB1_9
+## BB#5:
+	movl	-8(%rbp), %edi
+	callq	_isLeapyear
+	cmpl	$1, %eax
+	jne	LBB1_7
+## BB#6:
+	movl	-16(%rbp), %eax
+	addl	$60, %eax
+	movl	%eax, -20(%rbp)
+	jmp	LBB1_8
+LBB1_7:
+	movl	-16(%rbp), %eax
+	addl	$59, %eax
+	movl	%eax, -20(%rbp)
+LBB1_8:
+	jmp	LBB1_63
+LBB1_9:
+	cmpl	$4, -12(%rbp)
+	jne	LBB1_14
+## BB#10:
+	movl	-8(%rbp), %edi
+	callq	_isLeapyear
+	cmpl	$1, %eax
+	jne	LBB1_12
+## BB#11:
+	movl	-16(%rbp), %eax
+	addl	$91, %eax
+	movl	%eax, -20(%rbp)
+	jmp	LBB1_13
+LBB1_12:
+	movl	-16(%rbp), %eax
+	addl	$90, %eax
+	movl	%eax, -20(%rbp)
+LBB1_13:
+	jmp	LBB1_62
+LBB1_14:
+	cmpl	$5, -12(%rbp)
+	jne	LBB1_19
+## BB#15:
+	movl	-8(%rbp), %edi
+	callq	_isLeapyear
+	cmpl	$1, %eax
+	jne	LBB1_17
+## BB#16:
+	movl	-16(%rbp), %eax
+	addl	$121, %eax
+	movl	%eax, -20(%rbp)
+	jmp	LBB1_18
+LBB1_17:
+	movl	-16(%rbp), %eax
+	addl	$120, %eax
+	movl	%eax, -20(%rbp)
+LBB1_18:
+	jmp	LBB1_61
+LBB1_19:
+	cmpl	$6, -12(%rbp)
+	jne	LBB1_24
+## BB#20:
+	movl	-8(%rbp), %edi
+	callq	_isLeapyear
+	cmpl	$1, %eax
+	jne	LBB1_22
+## BB#21:
+	movl	-16(%rbp), %eax
+	addl	$152, %eax
+	movl	%eax, -20(%rbp)
+	jmp	LBB1_23
+LBB1_22:
+	movl	-16(%rbp), %eax
+	addl	$151, %eax
+	movl	%eax, -20(%rbp)
+LBB1_23:
+	jmp	LBB1_60
+LBB1_24:
+	cmpl	$7, -12(%rbp)
+	jne	LBB1_29
+## BB#25:
+	movl	-8(%rbp), %edi
+	callq	_isLeapyear
+	cmpl	$1, %eax
+	jne	LBB1_27
+## BB#26:
+	movl	-16(%rbp), %eax
+	addl	$182, %eax
+	movl	%eax, -20(%rbp)
+	jmp	LBB1_28
+LBB1_27:
+	movl	-16(%rbp), %eax
+	addl	$181, %eax
+	movl	%eax, -20(%rbp)
+LBB1_28:
+	jmp	LBB1_59
+LBB1_29:
+	cmpl	$8, -12(%rbp)
+	jne	LBB1_34
+## BB#30:
+	movl	-8(%rbp), %edi
+	callq	_isLeapyear
+	cmpl	$1, %eax
+	jne	LBB1_32
+## BB#31:
+	movl	-16(%rbp), %eax
+	addl	$213, %eax
+	movl	%eax, -20(%rbp)
+	jmp	LBB1_33
+LBB1_32:
+	movl	-16(%rbp), %eax
+	addl	$212, %eax
+	movl	%eax, -20(%rbp)
+LBB1_33:
+	jmp	LBB1_58
+LBB1_34:
+	cmpl	$9, -12(%rbp)
+	jne	LBB1_39
+## BB#35:
+	movl	-8(%rbp), %edi
+	callq	_isLeapyear
+	cmpl	$1, %eax
+	jne	LBB1_37
+## BB#36:
+	movl	-16(%rbp), %eax
+	addl	$244, %eax
+	movl	%eax, -20(%rbp)
+	jmp	LBB1_38
+LBB1_37:
+	movl	-16(%rbp), %eax
+	addl	$243, %eax
+	movl	%eax, -20(%rbp)
+LBB1_38:
+	jmp	LBB1_57
+LBB1_39:
+	cmpl	$10, -12(%rbp)
+	jne	LBB1_44
+## BB#40:
+	movl	-8(%rbp), %edi
+	callq	_isLeapyear
+	cmpl	$1, %eax
+	jne	LBB1_42
+## BB#41:
+	movl	-16(%rbp), %eax
+	addl	$274, %eax              ## imm = 0x112
+	movl	%eax, -20(%rbp)
+	jmp	LBB1_43
+LBB1_42:
+	movl	-16(%rbp), %eax
+	addl	$273, %eax              ## imm = 0x111
+	movl	%eax, -20(%rbp)
+LBB1_43:
+	jmp	LBB1_56
+LBB1_44:
+	cmpl	$11, -12(%rbp)
+	jne	LBB1_49
+## BB#45:
+	movl	-8(%rbp), %edi
+	callq	_isLeapyear
+	cmpl	$1, %eax
+	jne	LBB1_47
+## BB#46:
+	movl	-16(%rbp), %eax
+	addl	$305, %eax              ## imm = 0x131
+	movl	%eax, -20(%rbp)
+	jmp	LBB1_48
+LBB1_47:
+	movl	-16(%rbp), %eax
+	addl	$304, %eax              ## imm = 0x130
+	movl	%eax, -20(%rbp)
+LBB1_48:
+	jmp	LBB1_55
+LBB1_49:
+	cmpl	$12, -12(%rbp)
+	jne	LBB1_54
+## BB#50:
+	movl	-8(%rbp), %edi
+	callq	_isLeapyear
+	cmpl	$1, %eax
+	jne	LBB1_52
+## BB#51:
+	movl	-16(%rbp), %eax
+	addl	$335, %eax              ## imm = 0x14F
+	movl	%eax, -20(%rbp)
+	jmp	LBB1_53
+LBB1_52:
+	movl	-16(%rbp), %eax
+	addl	$334, %eax              ## imm = 0x14E
+	movl	%eax, -20(%rbp)
+LBB1_53:
+	jmp	LBB1_54
+LBB1_54:
+	jmp	LBB1_55
+LBB1_55:
+	jmp	LBB1_56
+LBB1_56:
+	jmp	LBB1_57
+LBB1_57:
+	jmp	LBB1_58
+LBB1_58:
+	jmp	LBB1_59
+LBB1_59:
+	jmp	LBB1_60
+LBB1_60:
+	jmp	LBB1_61
+LBB1_61:
+	jmp	LBB1_62
+LBB1_62:
+	jmp	LBB1_63
+LBB1_63:
+	jmp	LBB1_64
+LBB1_64:
+	jmp	LBB1_65
+LBB1_65:
+	leaq	L_.str1(%rip), %rdi
+	movl	-20(%rbp), %esi
+	movb	$0, %al
+	callq	_printf
+	movl	$0, %esi
+	movl	%eax, -28(%rbp)         ## 4-byte Spill
+	movl	%esi, %eax
+	addq	$32, %rsp
+	popq	%rbp
+	ret
+	.cfi_endproc
+
+	.section	__TEXT,__cstring,cstring_literals
+L_.str:                                 ## @.str
+	.asciz	"%d %d %d"
+
+L_.str1:                                ## @.str1
+	.asciz	"%d"
+
+
+.subsections_via_symbols

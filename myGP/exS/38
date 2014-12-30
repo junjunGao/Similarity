@@ -1,0 +1,316 @@
+	.section	__TEXT,__text,regular,pure_instructions
+	.globl	_rn
+	.align	4, 0x90
+_rn:                                    ## @rn
+	.cfi_startproc
+## BB#0:
+	pushq	%rbp
+Ltmp2:
+	.cfi_def_cfa_offset 16
+Ltmp3:
+	.cfi_offset %rbp, -16
+	movq	%rsp, %rbp
+Ltmp4:
+	.cfi_def_cfa_register %rbp
+	movl	$0, %eax
+	movl	$4, %ecx
+	movl	%edi, -8(%rbp)
+	movl	-8(%rbp), %edi
+	movl	%eax, -12(%rbp)         ## 4-byte Spill
+	movl	%edi, %eax
+	cltd
+	idivl	%ecx
+	movl	-12(%rbp), %eax         ## 4-byte Reload
+	cmpl	%edx, %eax
+	jne	LBB0_3
+## BB#1:
+	movl	$0, %eax
+	movl	$100, %ecx
+	movl	-8(%rbp), %edx
+	movl	%eax, -16(%rbp)         ## 4-byte Spill
+	movl	%edx, %eax
+	cltd
+	idivl	%ecx
+	movl	-16(%rbp), %eax         ## 4-byte Reload
+	cmpl	%edx, %eax
+	je	LBB0_3
+## BB#2:
+	movl	$1, -4(%rbp)
+	jmp	LBB0_6
+LBB0_3:
+	movl	$0, %eax
+	movl	$400, %ecx              ## imm = 0x190
+	movl	-8(%rbp), %edx
+	movl	%eax, -20(%rbp)         ## 4-byte Spill
+	movl	%edx, %eax
+	cltd
+	idivl	%ecx
+	movl	-20(%rbp), %eax         ## 4-byte Reload
+	cmpl	%edx, %eax
+	jne	LBB0_5
+## BB#4:
+	movl	$1, -4(%rbp)
+	jmp	LBB0_6
+LBB0_5:
+	movl	$0, -4(%rbp)
+LBB0_6:
+	movl	-4(%rbp), %eax
+	popq	%rbp
+	ret
+	.cfi_endproc
+
+	.globl	_main
+	.align	4, 0x90
+_main:                                  ## @main
+	.cfi_startproc
+## BB#0:
+	pushq	%rbp
+Ltmp7:
+	.cfi_def_cfa_offset 16
+Ltmp8:
+	.cfi_offset %rbp, -16
+	movq	%rsp, %rbp
+Ltmp9:
+	.cfi_def_cfa_register %rbp
+	subq	$32, %rsp
+	leaq	L_.str(%rip), %rdi
+	leaq	-8(%rbp), %rsi
+	leaq	-12(%rbp), %rdx
+	leaq	-16(%rbp), %rcx
+	movl	$0, -4(%rbp)
+	movb	$0, %al
+	callq	_scanf
+	movl	-8(%rbp), %edi
+	movl	%eax, -28(%rbp)         ## 4-byte Spill
+	callq	_rn
+	movl	%eax, -20(%rbp)
+	cmpl	$0, -20(%rbp)
+	jne	LBB1_26
+## BB#1:
+	cmpl	$1, -12(%rbp)
+	jne	LBB1_3
+## BB#2:
+	movl	-16(%rbp), %eax
+	movl	%eax, -24(%rbp)
+LBB1_3:
+	cmpl	$2, -12(%rbp)
+	jne	LBB1_5
+## BB#4:
+	movl	-16(%rbp), %eax
+	addl	$31, %eax
+	movl	%eax, -24(%rbp)
+LBB1_5:
+	cmpl	$3, -12(%rbp)
+	jne	LBB1_7
+## BB#6:
+	movl	-16(%rbp), %eax
+	addl	$31, %eax
+	addl	$28, %eax
+	movl	%eax, -24(%rbp)
+LBB1_7:
+	cmpl	$4, -12(%rbp)
+	jne	LBB1_9
+## BB#8:
+	movl	-16(%rbp), %eax
+	addl	$62, %eax
+	addl	$28, %eax
+	movl	%eax, -24(%rbp)
+LBB1_9:
+	cmpl	$5, -12(%rbp)
+	jne	LBB1_11
+## BB#10:
+	movl	-16(%rbp), %eax
+	addl	$90, %eax
+	addl	$30, %eax
+	movl	%eax, -24(%rbp)
+LBB1_11:
+	cmpl	$6, -12(%rbp)
+	jne	LBB1_13
+## BB#12:
+	movl	-16(%rbp), %eax
+	addl	$120, %eax
+	addl	$31, %eax
+	movl	%eax, -24(%rbp)
+LBB1_13:
+	cmpl	$7, -12(%rbp)
+	jne	LBB1_15
+## BB#14:
+	movl	-16(%rbp), %eax
+	addl	$151, %eax
+	addl	$30, %eax
+	movl	%eax, -24(%rbp)
+LBB1_15:
+	cmpl	$8, -12(%rbp)
+	jne	LBB1_17
+## BB#16:
+	movl	-16(%rbp), %eax
+	addl	$181, %eax
+	addl	$31, %eax
+	movl	%eax, -24(%rbp)
+LBB1_17:
+	cmpl	$9, -12(%rbp)
+	jne	LBB1_19
+## BB#18:
+	movl	-16(%rbp), %eax
+	addl	$181, %eax
+	addl	$31, %eax
+	addl	$31, %eax
+	movl	%eax, -24(%rbp)
+LBB1_19:
+	cmpl	$10, -12(%rbp)
+	jne	LBB1_21
+## BB#20:
+	movl	-16(%rbp), %eax
+	addl	$181, %eax
+	addl	$62, %eax
+	addl	$30, %eax
+	movl	%eax, -24(%rbp)
+LBB1_21:
+	cmpl	$11, -12(%rbp)
+	jne	LBB1_23
+## BB#22:
+	movl	-16(%rbp), %eax
+	addl	$181, %eax
+	addl	$62, %eax
+	addl	$31, %eax
+	addl	$30, %eax
+	movl	%eax, -24(%rbp)
+LBB1_23:
+	cmpl	$12, -12(%rbp)
+	jne	LBB1_25
+## BB#24:
+	movl	-16(%rbp), %eax
+	addl	$181, %eax
+	addl	$62, %eax
+	addl	$61, %eax
+	addl	$30, %eax
+	movl	%eax, -24(%rbp)
+LBB1_25:
+	jmp	LBB1_26
+LBB1_26:
+	movl	$1, %eax
+	cmpl	-20(%rbp), %eax
+	jne	LBB1_52
+## BB#27:
+	cmpl	$1, -12(%rbp)
+	jne	LBB1_29
+## BB#28:
+	movl	-16(%rbp), %eax
+	movl	%eax, -24(%rbp)
+LBB1_29:
+	cmpl	$2, -12(%rbp)
+	jne	LBB1_31
+## BB#30:
+	movl	-16(%rbp), %eax
+	addl	$31, %eax
+	movl	%eax, -24(%rbp)
+LBB1_31:
+	cmpl	$3, -12(%rbp)
+	jne	LBB1_33
+## BB#32:
+	movl	-16(%rbp), %eax
+	addl	$31, %eax
+	addl	$29, %eax
+	movl	%eax, -24(%rbp)
+LBB1_33:
+	cmpl	$4, -12(%rbp)
+	jne	LBB1_35
+## BB#34:
+	movl	-16(%rbp), %eax
+	addl	$62, %eax
+	addl	$29, %eax
+	movl	%eax, -24(%rbp)
+LBB1_35:
+	cmpl	$5, -12(%rbp)
+	jne	LBB1_37
+## BB#36:
+	movl	-16(%rbp), %eax
+	addl	$91, %eax
+	addl	$30, %eax
+	movl	%eax, -24(%rbp)
+LBB1_37:
+	cmpl	$6, -12(%rbp)
+	jne	LBB1_39
+## BB#38:
+	movl	-16(%rbp), %eax
+	addl	$121, %eax
+	addl	$31, %eax
+	movl	%eax, -24(%rbp)
+LBB1_39:
+	cmpl	$7, -12(%rbp)
+	jne	LBB1_41
+## BB#40:
+	movl	-16(%rbp), %eax
+	addl	$151, %eax
+	addl	$31, %eax
+	movl	%eax, -24(%rbp)
+LBB1_41:
+	cmpl	$8, -12(%rbp)
+	jne	LBB1_43
+## BB#42:
+	movl	-16(%rbp), %eax
+	addl	$182, %eax
+	addl	$31, %eax
+	movl	%eax, -24(%rbp)
+LBB1_43:
+	cmpl	$9, -12(%rbp)
+	jne	LBB1_45
+## BB#44:
+	movl	-16(%rbp), %eax
+	addl	$182, %eax
+	addl	$31, %eax
+	addl	$31, %eax
+	movl	%eax, -24(%rbp)
+LBB1_45:
+	cmpl	$10, -12(%rbp)
+	jne	LBB1_47
+## BB#46:
+	movl	-16(%rbp), %eax
+	addl	$182, %eax
+	addl	$62, %eax
+	addl	$30, %eax
+	movl	%eax, -24(%rbp)
+LBB1_47:
+	cmpl	$11, -12(%rbp)
+	jne	LBB1_49
+## BB#48:
+	movl	-16(%rbp), %eax
+	addl	$182, %eax
+	addl	$62, %eax
+	addl	$31, %eax
+	addl	$30, %eax
+	movl	%eax, -24(%rbp)
+LBB1_49:
+	cmpl	$12, -12(%rbp)
+	jne	LBB1_51
+## BB#50:
+	movl	-16(%rbp), %eax
+	addl	$182, %eax
+	addl	$62, %eax
+	addl	$61, %eax
+	addl	$30, %eax
+	movl	%eax, -24(%rbp)
+LBB1_51:
+	jmp	LBB1_52
+LBB1_52:
+	leaq	L_.str1(%rip), %rdi
+	movl	-24(%rbp), %esi
+	movb	$0, %al
+	callq	_printf
+	movl	$0, %esi
+	movl	%eax, -32(%rbp)         ## 4-byte Spill
+	movl	%esi, %eax
+	addq	$32, %rsp
+	popq	%rbp
+	ret
+	.cfi_endproc
+
+	.section	__TEXT,__cstring,cstring_literals
+L_.str:                                 ## @.str
+	.asciz	"%d %d %d"
+
+L_.str1:                                ## @.str1
+	.asciz	"%d"
+
+
+.subsections_via_symbols

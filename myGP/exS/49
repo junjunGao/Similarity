@@ -1,0 +1,228 @@
+	.section	__TEXT,__text,regular,pure_instructions
+	.globl	_runnian
+	.align	4, 0x90
+_runnian:                               ## @runnian
+	.cfi_startproc
+## BB#0:
+	pushq	%rbp
+Ltmp2:
+	.cfi_def_cfa_offset 16
+Ltmp3:
+	.cfi_offset %rbp, -16
+	movq	%rsp, %rbp
+Ltmp4:
+	.cfi_def_cfa_register %rbp
+	movl	$4, %eax
+	movl	%edi, -8(%rbp)
+	movl	-8(%rbp), %edi
+	movl	%eax, -12(%rbp)         ## 4-byte Spill
+	movl	%edi, %eax
+	cltd
+	movl	-12(%rbp), %edi         ## 4-byte Reload
+	idivl	%edi
+	cmpl	$0, %edx
+	jne	LBB0_2
+## BB#1:
+	movl	$100, %eax
+	movl	-8(%rbp), %ecx
+	movl	%eax, -16(%rbp)         ## 4-byte Spill
+	movl	%ecx, %eax
+	cltd
+	movl	-16(%rbp), %ecx         ## 4-byte Reload
+	idivl	%ecx
+	cmpl	$0, %edx
+	jne	LBB0_3
+LBB0_2:
+	movl	$400, %eax              ## imm = 0x190
+	movl	-8(%rbp), %ecx
+	movl	%eax, -20(%rbp)         ## 4-byte Spill
+	movl	%ecx, %eax
+	cltd
+	movl	-20(%rbp), %ecx         ## 4-byte Reload
+	idivl	%ecx
+	cmpl	$0, %edx
+	jne	LBB0_4
+LBB0_3:
+	movl	$1, -4(%rbp)
+	jmp	LBB0_5
+LBB0_4:
+	movl	$0, -4(%rbp)
+LBB0_5:
+	movl	-4(%rbp), %eax
+	popq	%rbp
+	ret
+	.cfi_endproc
+
+	.globl	_main
+	.align	4, 0x90
+_main:                                  ## @main
+	.cfi_startproc
+## BB#0:
+	pushq	%rbp
+Ltmp8:
+	.cfi_def_cfa_offset 16
+Ltmp9:
+	.cfi_offset %rbp, -16
+	movq	%rsp, %rbp
+Ltmp10:
+	.cfi_def_cfa_register %rbp
+	pushq	%rbx
+	subq	$232, %rsp
+Ltmp11:
+	.cfi_offset %rbx, -24
+	leaq	L_.str(%rip), %rdi
+	leaq	-156(%rbp), %rsi
+	leaq	-148(%rbp), %rdx
+	leaq	-164(%rbp), %rcx
+	leaq	L_main.p(%rip), %rax
+	movabsq	$52, %r8
+	leaq	-144(%rbp), %r9
+	leaq	L_main.s(%rip), %r10
+	leaq	-80(%rbp), %r11
+	movq	___stack_chk_guard@GOTPCREL(%rip), %rbx
+	movq	(%rbx), %rbx
+	movq	%rbx, -16(%rbp)
+	movl	$0, -20(%rbp)
+	movq	%rdi, -176(%rbp)        ## 8-byte Spill
+	movq	%r11, %rdi
+	movq	%rsi, -184(%rbp)        ## 8-byte Spill
+	movq	%r10, %rsi
+	movq	%rdx, -192(%rbp)        ## 8-byte Spill
+	movq	%r8, %rdx
+	movq	%r9, -200(%rbp)         ## 8-byte Spill
+	movq	%r8, -208(%rbp)         ## 8-byte Spill
+	movq	%rax, -216(%rbp)        ## 8-byte Spill
+	movq	%rcx, -224(%rbp)        ## 8-byte Spill
+	callq	_memcpy
+	movq	-200(%rbp), %rax        ## 8-byte Reload
+	movq	%rax, %rdi
+	movq	-216(%rbp), %rsi        ## 8-byte Reload
+	movq	-208(%rbp), %rdx        ## 8-byte Reload
+	callq	_memcpy
+	movl	$0, -168(%rbp)
+	movq	-176(%rbp), %rdi        ## 8-byte Reload
+	movq	-184(%rbp), %rsi        ## 8-byte Reload
+	movq	-192(%rbp), %rdx        ## 8-byte Reload
+	movq	-224(%rbp), %rcx        ## 8-byte Reload
+	movb	$0, %al
+	callq	_scanf
+	movl	-156(%rbp), %edi
+	movl	%eax, -228(%rbp)        ## 4-byte Spill
+	callq	_runnian
+	movl	%eax, -160(%rbp)
+	cmpl	$0, -160(%rbp)
+	jne	LBB1_6
+## BB#1:
+	movl	$1, -152(%rbp)
+LBB1_2:                                 ## =>This Inner Loop Header: Depth=1
+	movl	-152(%rbp), %eax
+	movl	-148(%rbp), %ecx
+	subl	$1, %ecx
+	cmpl	%ecx, %eax
+	jg	LBB1_5
+## BB#3:                                ##   in Loop: Header=BB1_2 Depth=1
+	movl	-168(%rbp), %eax
+	movslq	-152(%rbp), %rcx
+	addl	-80(%rbp,%rcx,4), %eax
+	movl	%eax, -168(%rbp)
+## BB#4:                                ##   in Loop: Header=BB1_2 Depth=1
+	movl	-152(%rbp), %eax
+	addl	$1, %eax
+	movl	%eax, -152(%rbp)
+	jmp	LBB1_2
+LBB1_5:
+	leaq	L_.str1(%rip), %rdi
+	movl	-168(%rbp), %eax
+	addl	-164(%rbp), %eax
+	movl	%eax, -168(%rbp)
+	movl	-168(%rbp), %esi
+	movb	$0, %al
+	callq	_printf
+	movl	%eax, -232(%rbp)        ## 4-byte Spill
+LBB1_6:
+	cmpl	$1, -160(%rbp)
+	jne	LBB1_12
+## BB#7:
+	movl	$1, -152(%rbp)
+LBB1_8:                                 ## =>This Inner Loop Header: Depth=1
+	movl	-152(%rbp), %eax
+	movl	-148(%rbp), %ecx
+	subl	$1, %ecx
+	cmpl	%ecx, %eax
+	jg	LBB1_11
+## BB#9:                                ##   in Loop: Header=BB1_8 Depth=1
+	movl	-168(%rbp), %eax
+	movslq	-152(%rbp), %rcx
+	addl	-144(%rbp,%rcx,4), %eax
+	movl	%eax, -168(%rbp)
+## BB#10:                               ##   in Loop: Header=BB1_8 Depth=1
+	movl	-152(%rbp), %eax
+	addl	$1, %eax
+	movl	%eax, -152(%rbp)
+	jmp	LBB1_8
+LBB1_11:
+	leaq	L_.str1(%rip), %rdi
+	movl	-168(%rbp), %eax
+	addl	-164(%rbp), %eax
+	movl	%eax, -168(%rbp)
+	movl	-168(%rbp), %esi
+	movb	$0, %al
+	callq	_printf
+	movl	%eax, -236(%rbp)        ## 4-byte Spill
+LBB1_12:
+	movq	___stack_chk_guard@GOTPCREL(%rip), %rax
+	movq	(%rax), %rax
+	cmpq	-16(%rbp), %rax
+	jne	LBB1_14
+## BB#13:                               ## %SP_return
+	movl	$0, %eax
+	addq	$232, %rsp
+	popq	%rbx
+	popq	%rbp
+	ret
+LBB1_14:                                ## %CallStackCheckFailBlk
+	callq	___stack_chk_fail
+	.cfi_endproc
+
+	.section	__TEXT,__const
+	.align	4                       ## @main.s
+L_main.s:
+	.long	31                      ## 0x1f
+	.long	31                      ## 0x1f
+	.long	28                      ## 0x1c
+	.long	31                      ## 0x1f
+	.long	30                      ## 0x1e
+	.long	31                      ## 0x1f
+	.long	30                      ## 0x1e
+	.long	31                      ## 0x1f
+	.long	31                      ## 0x1f
+	.long	30                      ## 0x1e
+	.long	31                      ## 0x1f
+	.long	30                      ## 0x1e
+	.long	31                      ## 0x1f
+
+	.align	4                       ## @main.p
+L_main.p:
+	.long	31                      ## 0x1f
+	.long	31                      ## 0x1f
+	.long	29                      ## 0x1d
+	.long	31                      ## 0x1f
+	.long	30                      ## 0x1e
+	.long	31                      ## 0x1f
+	.long	30                      ## 0x1e
+	.long	31                      ## 0x1f
+	.long	31                      ## 0x1f
+	.long	30                      ## 0x1e
+	.long	31                      ## 0x1f
+	.long	30                      ## 0x1e
+	.long	31                      ## 0x1f
+
+	.section	__TEXT,__cstring,cstring_literals
+L_.str:                                 ## @.str
+	.asciz	"%d %d %d"
+
+L_.str1:                                ## @.str1
+	.asciz	"%d"
+
+
+.subsections_via_symbols

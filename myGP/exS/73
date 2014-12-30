@@ -1,0 +1,469 @@
+	.section	__TEXT,__text,regular,pure_instructions
+	.globl	_main
+	.align	4, 0x90
+_main:                                  ## @main
+	.cfi_startproc
+## BB#0:
+	pushq	%rbp
+Ltmp2:
+	.cfi_def_cfa_offset 16
+Ltmp3:
+	.cfi_offset %rbp, -16
+	movq	%rsp, %rbp
+Ltmp4:
+	.cfi_def_cfa_register %rbp
+	subq	$128, %rsp
+	leaq	L_.str(%rip), %rdi
+	leaq	-8(%rbp), %rsi
+	leaq	-12(%rbp), %rdx
+	leaq	-16(%rbp), %rcx
+	movl	$0, -4(%rbp)
+	movb	$0, %al
+	callq	_scanf
+	cmpl	$1, -12(%rbp)
+	movl	%eax, -24(%rbp)         ## 4-byte Spill
+	jne	LBB0_2
+## BB#1:
+	leaq	L_.str1(%rip), %rdi
+	movl	-16(%rbp), %esi
+	movb	$0, %al
+	callq	_printf
+	movl	%eax, -28(%rbp)         ## 4-byte Spill
+	jmp	LBB0_5
+LBB0_2:
+	cmpl	$2, -12(%rbp)
+	jne	LBB0_4
+## BB#3:
+	leaq	L_.str1(%rip), %rdi
+	movl	-16(%rbp), %eax
+	addl	$31, %eax
+	movl	%eax, %esi
+	movb	$0, %al
+	callq	_printf
+	movl	%eax, -32(%rbp)         ## 4-byte Spill
+LBB0_4:
+	jmp	LBB0_5
+LBB0_5:
+	movl	$4, %eax
+	movl	-8(%rbp), %ecx
+	movl	%eax, -36(%rbp)         ## 4-byte Spill
+	movl	%ecx, %eax
+	cltd
+	movl	-36(%rbp), %ecx         ## 4-byte Reload
+	idivl	%ecx
+	cmpl	$0, %edx
+	jne	LBB0_37
+## BB#6:
+	movl	$100, %eax
+	movl	-8(%rbp), %ecx
+	movl	%eax, -40(%rbp)         ## 4-byte Spill
+	movl	%ecx, %eax
+	cltd
+	movl	-40(%rbp), %ecx         ## 4-byte Reload
+	idivl	%ecx
+	cmpl	$0, %edx
+	je	LBB0_37
+## BB#7:
+	cmpl	$3, -12(%rbp)
+	jne	LBB0_9
+## BB#8:
+	leaq	L_.str1(%rip), %rdi
+	movl	-16(%rbp), %eax
+	addl	$29, %eax
+	addl	$31, %eax
+	movl	%eax, %esi
+	movb	$0, %al
+	callq	_printf
+	movl	%eax, -44(%rbp)         ## 4-byte Spill
+	jmp	LBB0_36
+LBB0_9:
+	cmpl	$4, -12(%rbp)
+	jne	LBB0_11
+## BB#10:
+	leaq	L_.str1(%rip), %rdi
+	movl	-16(%rbp), %eax
+	addl	$31, %eax
+	addl	$29, %eax
+	addl	$31, %eax
+	movl	%eax, %esi
+	movb	$0, %al
+	callq	_printf
+	movl	%eax, -48(%rbp)         ## 4-byte Spill
+	jmp	LBB0_35
+LBB0_11:
+	cmpl	$5, -12(%rbp)
+	jne	LBB0_13
+## BB#12:
+	leaq	L_.str1(%rip), %rdi
+	movl	-16(%rbp), %eax
+	addl	$31, %eax
+	addl	$29, %eax
+	addl	$31, %eax
+	addl	$30, %eax
+	movl	%eax, %esi
+	movb	$0, %al
+	callq	_printf
+	movl	%eax, -52(%rbp)         ## 4-byte Spill
+	jmp	LBB0_34
+LBB0_13:
+	cmpl	$6, -12(%rbp)
+	jne	LBB0_15
+## BB#14:
+	leaq	L_.str1(%rip), %rdi
+	movl	-16(%rbp), %eax
+	addl	$31, %eax
+	addl	$29, %eax
+	addl	$31, %eax
+	addl	$30, %eax
+	addl	$31, %eax
+	movl	%eax, %esi
+	movb	$0, %al
+	callq	_printf
+	movl	%eax, -56(%rbp)         ## 4-byte Spill
+	jmp	LBB0_33
+LBB0_15:
+	cmpl	$7, -12(%rbp)
+	jne	LBB0_17
+## BB#16:
+	leaq	L_.str1(%rip), %rdi
+	movl	-16(%rbp), %eax
+	addl	$31, %eax
+	addl	$29, %eax
+	addl	$31, %eax
+	addl	$30, %eax
+	addl	$31, %eax
+	addl	$30, %eax
+	movl	%eax, %esi
+	movb	$0, %al
+	callq	_printf
+	movl	%eax, -60(%rbp)         ## 4-byte Spill
+	jmp	LBB0_32
+LBB0_17:
+	cmpl	$8, -12(%rbp)
+	jne	LBB0_19
+## BB#18:
+	leaq	L_.str1(%rip), %rdi
+	movl	-16(%rbp), %eax
+	addl	$31, %eax
+	addl	$29, %eax
+	addl	$31, %eax
+	addl	$30, %eax
+	addl	$31, %eax
+	addl	$30, %eax
+	addl	$31, %eax
+	movl	%eax, %esi
+	movb	$0, %al
+	callq	_printf
+	movl	%eax, -64(%rbp)         ## 4-byte Spill
+	jmp	LBB0_31
+LBB0_19:
+	cmpl	$9, -12(%rbp)
+	jne	LBB0_21
+## BB#20:
+	leaq	L_.str1(%rip), %rdi
+	movl	-16(%rbp), %eax
+	addl	$31, %eax
+	addl	$29, %eax
+	addl	$31, %eax
+	addl	$30, %eax
+	addl	$31, %eax
+	addl	$30, %eax
+	addl	$31, %eax
+	addl	$31, %eax
+	movl	%eax, %esi
+	movb	$0, %al
+	callq	_printf
+	movl	%eax, -68(%rbp)         ## 4-byte Spill
+	jmp	LBB0_30
+LBB0_21:
+	cmpl	$10, -12(%rbp)
+	jne	LBB0_23
+## BB#22:
+	leaq	L_.str1(%rip), %rdi
+	movl	-16(%rbp), %eax
+	addl	$31, %eax
+	addl	$29, %eax
+	addl	$31, %eax
+	addl	$30, %eax
+	addl	$31, %eax
+	addl	$30, %eax
+	addl	$31, %eax
+	addl	$31, %eax
+	addl	$30, %eax
+	movl	%eax, %esi
+	movb	$0, %al
+	callq	_printf
+	movl	%eax, -72(%rbp)         ## 4-byte Spill
+	jmp	LBB0_29
+LBB0_23:
+	cmpl	$11, -12(%rbp)
+	jne	LBB0_25
+## BB#24:
+	leaq	L_.str1(%rip), %rdi
+	movl	-16(%rbp), %eax
+	addl	$31, %eax
+	addl	$29, %eax
+	addl	$31, %eax
+	addl	$30, %eax
+	addl	$31, %eax
+	addl	$30, %eax
+	addl	$31, %eax
+	addl	$31, %eax
+	addl	$30, %eax
+	addl	$31, %eax
+	movl	%eax, %esi
+	movb	$0, %al
+	callq	_printf
+	movl	%eax, -76(%rbp)         ## 4-byte Spill
+	jmp	LBB0_28
+LBB0_25:
+	cmpl	$12, -12(%rbp)
+	jne	LBB0_27
+## BB#26:
+	leaq	L_.str1(%rip), %rdi
+	movl	-16(%rbp), %eax
+	addl	$31, %eax
+	addl	$29, %eax
+	addl	$31, %eax
+	addl	$30, %eax
+	addl	$31, %eax
+	addl	$30, %eax
+	addl	$31, %eax
+	addl	$31, %eax
+	addl	$30, %eax
+	addl	$31, %eax
+	addl	$30, %eax
+	movl	%eax, %esi
+	movb	$0, %al
+	callq	_printf
+	movl	%eax, -80(%rbp)         ## 4-byte Spill
+LBB0_27:
+	jmp	LBB0_28
+LBB0_28:
+	jmp	LBB0_29
+LBB0_29:
+	jmp	LBB0_30
+LBB0_30:
+	jmp	LBB0_31
+LBB0_31:
+	jmp	LBB0_32
+LBB0_32:
+	jmp	LBB0_33
+LBB0_33:
+	jmp	LBB0_34
+LBB0_34:
+	jmp	LBB0_35
+LBB0_35:
+	jmp	LBB0_36
+LBB0_36:
+	jmp	LBB0_67
+LBB0_37:
+	cmpl	$3, -12(%rbp)
+	jne	LBB0_39
+## BB#38:
+	leaq	L_.str1(%rip), %rdi
+	movl	-16(%rbp), %eax
+	addl	$28, %eax
+	addl	$31, %eax
+	movl	%eax, %esi
+	movb	$0, %al
+	callq	_printf
+	movl	%eax, -84(%rbp)         ## 4-byte Spill
+	jmp	LBB0_66
+LBB0_39:
+	cmpl	$4, -12(%rbp)
+	jne	LBB0_41
+## BB#40:
+	leaq	L_.str1(%rip), %rdi
+	movl	-16(%rbp), %eax
+	addl	$31, %eax
+	addl	$28, %eax
+	addl	$31, %eax
+	movl	%eax, %esi
+	movb	$0, %al
+	callq	_printf
+	movl	%eax, -88(%rbp)         ## 4-byte Spill
+	jmp	LBB0_65
+LBB0_41:
+	cmpl	$5, -12(%rbp)
+	jne	LBB0_43
+## BB#42:
+	leaq	L_.str1(%rip), %rdi
+	movl	-16(%rbp), %eax
+	addl	$31, %eax
+	addl	$28, %eax
+	addl	$31, %eax
+	addl	$30, %eax
+	movl	%eax, %esi
+	movb	$0, %al
+	callq	_printf
+	movl	%eax, -92(%rbp)         ## 4-byte Spill
+	jmp	LBB0_64
+LBB0_43:
+	cmpl	$6, -12(%rbp)
+	jne	LBB0_45
+## BB#44:
+	leaq	L_.str1(%rip), %rdi
+	movl	-16(%rbp), %eax
+	addl	$31, %eax
+	addl	$28, %eax
+	addl	$31, %eax
+	addl	$30, %eax
+	addl	$31, %eax
+	movl	%eax, %esi
+	movb	$0, %al
+	callq	_printf
+	movl	%eax, -96(%rbp)         ## 4-byte Spill
+	jmp	LBB0_63
+LBB0_45:
+	cmpl	$7, -12(%rbp)
+	jne	LBB0_47
+## BB#46:
+	leaq	L_.str1(%rip), %rdi
+	movl	-16(%rbp), %eax
+	addl	$31, %eax
+	addl	$28, %eax
+	addl	$31, %eax
+	addl	$30, %eax
+	addl	$31, %eax
+	addl	$30, %eax
+	movl	%eax, %esi
+	movb	$0, %al
+	callq	_printf
+	movl	%eax, -100(%rbp)        ## 4-byte Spill
+	jmp	LBB0_62
+LBB0_47:
+	cmpl	$8, -12(%rbp)
+	jne	LBB0_49
+## BB#48:
+	leaq	L_.str1(%rip), %rdi
+	movl	-16(%rbp), %eax
+	addl	$31, %eax
+	addl	$28, %eax
+	addl	$31, %eax
+	addl	$30, %eax
+	addl	$31, %eax
+	addl	$30, %eax
+	addl	$31, %eax
+	movl	%eax, %esi
+	movb	$0, %al
+	callq	_printf
+	movl	%eax, -104(%rbp)        ## 4-byte Spill
+	jmp	LBB0_61
+LBB0_49:
+	cmpl	$9, -12(%rbp)
+	jne	LBB0_51
+## BB#50:
+	leaq	L_.str1(%rip), %rdi
+	movl	-16(%rbp), %eax
+	addl	$31, %eax
+	addl	$28, %eax
+	addl	$31, %eax
+	addl	$30, %eax
+	addl	$31, %eax
+	addl	$30, %eax
+	addl	$31, %eax
+	addl	$31, %eax
+	movl	%eax, %esi
+	movb	$0, %al
+	callq	_printf
+	movl	%eax, -108(%rbp)        ## 4-byte Spill
+	jmp	LBB0_60
+LBB0_51:
+	cmpl	$10, -12(%rbp)
+	jne	LBB0_53
+## BB#52:
+	leaq	L_.str1(%rip), %rdi
+	movl	-16(%rbp), %eax
+	addl	$31, %eax
+	addl	$28, %eax
+	addl	$31, %eax
+	addl	$30, %eax
+	addl	$31, %eax
+	addl	$30, %eax
+	addl	$31, %eax
+	addl	$31, %eax
+	addl	$30, %eax
+	movl	%eax, %esi
+	movb	$0, %al
+	callq	_printf
+	movl	%eax, -112(%rbp)        ## 4-byte Spill
+	jmp	LBB0_59
+LBB0_53:
+	cmpl	$11, -12(%rbp)
+	jne	LBB0_55
+## BB#54:
+	leaq	L_.str1(%rip), %rdi
+	movl	-16(%rbp), %eax
+	addl	$31, %eax
+	addl	$28, %eax
+	addl	$31, %eax
+	addl	$30, %eax
+	addl	$31, %eax
+	addl	$30, %eax
+	addl	$31, %eax
+	addl	$31, %eax
+	addl	$30, %eax
+	addl	$31, %eax
+	movl	%eax, %esi
+	movb	$0, %al
+	callq	_printf
+	movl	%eax, -116(%rbp)        ## 4-byte Spill
+	jmp	LBB0_58
+LBB0_55:
+	cmpl	$12, -12(%rbp)
+	jne	LBB0_57
+## BB#56:
+	leaq	L_.str1(%rip), %rdi
+	movl	-16(%rbp), %eax
+	addl	$31, %eax
+	addl	$28, %eax
+	addl	$31, %eax
+	addl	$30, %eax
+	addl	$31, %eax
+	addl	$30, %eax
+	addl	$31, %eax
+	addl	$31, %eax
+	addl	$30, %eax
+	addl	$31, %eax
+	addl	$30, %eax
+	movl	%eax, %esi
+	movb	$0, %al
+	callq	_printf
+	movl	%eax, -120(%rbp)        ## 4-byte Spill
+LBB0_57:
+	jmp	LBB0_58
+LBB0_58:
+	jmp	LBB0_59
+LBB0_59:
+	jmp	LBB0_60
+LBB0_60:
+	jmp	LBB0_61
+LBB0_61:
+	jmp	LBB0_62
+LBB0_62:
+	jmp	LBB0_63
+LBB0_63:
+	jmp	LBB0_64
+LBB0_64:
+	jmp	LBB0_65
+LBB0_65:
+	jmp	LBB0_66
+LBB0_66:
+	jmp	LBB0_67
+LBB0_67:
+	movl	$0, %eax
+	addq	$128, %rsp
+	popq	%rbp
+	ret
+	.cfi_endproc
+
+	.section	__TEXT,__cstring,cstring_literals
+L_.str:                                 ## @.str
+	.asciz	"%d %d %d"
+
+L_.str1:                                ## @.str1
+	.asciz	"%d"
+
+
+.subsections_via_symbols

@@ -1,0 +1,177 @@
+	.section	__TEXT,__text,regular,pure_instructions
+	.globl	_main
+	.align	4, 0x90
+_main:                                  ## @main
+	.cfi_startproc
+## BB#0:
+	pushq	%rbp
+Ltmp2:
+	.cfi_def_cfa_offset 16
+Ltmp3:
+	.cfi_offset %rbp, -16
+	movq	%rsp, %rbp
+Ltmp4:
+	.cfi_def_cfa_register %rbp
+	subq	$64, %rsp
+	leaq	L_.str(%rip), %rdi
+	xorl	%eax, %eax
+	movb	%al, %cl
+	leaq	-12(%rbp), %rsi
+	leaq	-8(%rbp), %rdx
+	leaq	-4(%rbp), %r8
+	movb	%cl, -21(%rbp)          ## 1-byte Spill
+	movq	%r8, %rcx
+	movb	-21(%rbp), %al          ## 1-byte Reload
+	callq	_scanf
+	movl	-8(%rbp), %r9d
+	decl	%r9d
+	movl	%r9d, %ecx
+	subl	$11, %r9d
+	movl	%eax, -28(%rbp)         ## 4-byte Spill
+	movq	%rcx, -40(%rbp)         ## 8-byte Spill
+	movl	%r9d, -44(%rbp)         ## 4-byte Spill
+	ja	LBB0_13
+## BB#23:
+	leaq	LJTI0_0(%rip), %rax
+	movq	-40(%rbp), %rcx         ## 8-byte Reload
+	movslq	(%rax,%rcx,4), %rdx
+	addq	%rax, %rdx
+	jmpq	*%rdx
+LBB0_1:
+	movl	$0, -16(%rbp)
+	jmp	LBB0_14
+LBB0_2:
+	movl	$31, -16(%rbp)
+	jmp	LBB0_14
+LBB0_3:
+	movl	$59, -16(%rbp)
+	jmp	LBB0_14
+LBB0_4:
+	movl	$90, -16(%rbp)
+	jmp	LBB0_14
+LBB0_5:
+	movl	$120, -16(%rbp)
+	jmp	LBB0_14
+LBB0_6:
+	movl	$151, -16(%rbp)
+	jmp	LBB0_14
+LBB0_7:
+	movl	$181, -16(%rbp)
+	jmp	LBB0_14
+LBB0_8:
+	movl	$212, -16(%rbp)
+	jmp	LBB0_14
+LBB0_9:
+	movl	$243, -16(%rbp)
+	jmp	LBB0_14
+LBB0_10:
+	movl	$273, -16(%rbp)         ## imm = 0x111
+	jmp	LBB0_14
+LBB0_11:
+	movl	$304, -16(%rbp)         ## imm = 0x130
+	jmp	LBB0_14
+LBB0_12:
+	movl	$334, -16(%rbp)         ## imm = 0x14E
+	jmp	LBB0_14
+LBB0_13:
+	leaq	L_.str1(%rip), %rdi
+	movb	$0, %al
+	callq	_printf
+	movl	%eax, -48(%rbp)         ## 4-byte Spill
+LBB0_14:
+	movl	$400, %eax              ## imm = 0x190
+	movl	-16(%rbp), %ecx
+	addl	-4(%rbp), %ecx
+	movl	%ecx, -16(%rbp)
+	movl	-12(%rbp), %ecx
+	movl	%eax, -52(%rbp)         ## 4-byte Spill
+	movl	%ecx, %eax
+	cltd
+	movl	-52(%rbp), %ecx         ## 4-byte Reload
+	idivl	%ecx
+	cmpl	$0, %edx
+	je	LBB0_17
+## BB#15:
+	movl	$4, %eax
+	movl	-12(%rbp), %ecx
+	movl	%eax, -56(%rbp)         ## 4-byte Spill
+	movl	%ecx, %eax
+	cltd
+	movl	-56(%rbp), %ecx         ## 4-byte Reload
+	idivl	%ecx
+	cmpl	$0, %edx
+	jne	LBB0_18
+## BB#16:
+	movl	$100, %eax
+	movl	-12(%rbp), %ecx
+	movl	%eax, -60(%rbp)         ## 4-byte Spill
+	movl	%ecx, %eax
+	cltd
+	movl	-60(%rbp), %ecx         ## 4-byte Reload
+	idivl	%ecx
+	cmpl	$0, %edx
+	je	LBB0_18
+LBB0_17:
+	movl	$1, -20(%rbp)
+	jmp	LBB0_19
+LBB0_18:
+	movl	$0, -20(%rbp)
+LBB0_19:
+	cmpl	$1, -20(%rbp)
+	jne	LBB0_22
+## BB#20:
+	cmpl	$2, -8(%rbp)
+	jle	LBB0_22
+## BB#21:
+	movl	-16(%rbp), %eax
+	addl	$1, %eax
+	movl	%eax, -16(%rbp)
+LBB0_22:
+	leaq	L_.str2(%rip), %rdi
+	movl	-16(%rbp), %esi
+	movb	$0, %al
+	callq	_printf
+	movl	%eax, -64(%rbp)         ## 4-byte Spill
+	addq	$64, %rsp
+	popq	%rbp
+	ret
+	.cfi_endproc
+	.align	2, 0x90
+L0_0_set_1 = LBB0_1-LJTI0_0
+L0_0_set_2 = LBB0_2-LJTI0_0
+L0_0_set_3 = LBB0_3-LJTI0_0
+L0_0_set_4 = LBB0_4-LJTI0_0
+L0_0_set_5 = LBB0_5-LJTI0_0
+L0_0_set_6 = LBB0_6-LJTI0_0
+L0_0_set_7 = LBB0_7-LJTI0_0
+L0_0_set_8 = LBB0_8-LJTI0_0
+L0_0_set_9 = LBB0_9-LJTI0_0
+L0_0_set_10 = LBB0_10-LJTI0_0
+L0_0_set_11 = LBB0_11-LJTI0_0
+L0_0_set_12 = LBB0_12-LJTI0_0
+LJTI0_0:
+	.long	L0_0_set_1
+	.long	L0_0_set_2
+	.long	L0_0_set_3
+	.long	L0_0_set_4
+	.long	L0_0_set_5
+	.long	L0_0_set_6
+	.long	L0_0_set_7
+	.long	L0_0_set_8
+	.long	L0_0_set_9
+	.long	L0_0_set_10
+	.long	L0_0_set_11
+	.long	L0_0_set_12
+
+	.section	__TEXT,__cstring,cstring_literals
+L_.str:                                 ## @.str
+	.asciz	"%d %d %d"
+
+L_.str1:                                ## @.str1
+	.asciz	"data error\n"
+
+L_.str2:                                ## @.str2
+	.asciz	"%d"
+
+
+.subsections_via_symbols

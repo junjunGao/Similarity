@@ -1,0 +1,183 @@
+	.section	__TEXT,__text,regular,pure_instructions
+	.globl	_main
+	.align	4, 0x90
+_main:                                  ## @main
+	.cfi_startproc
+## BB#0:
+	pushq	%rbp
+Ltmp2:
+	.cfi_def_cfa_offset 16
+Ltmp3:
+	.cfi_offset %rbp, -16
+	movq	%rsp, %rbp
+Ltmp4:
+	.cfi_def_cfa_register %rbp
+	subq	$128, %rsp
+	leaq	L_.str(%rip), %rdi
+	leaq	L_main.month_check(%rip), %rax
+	movabsq	$48, %rdx
+	leaq	-64(%rbp), %rcx
+	movq	___stack_chk_guard@GOTPCREL(%rip), %rsi
+	movq	(%rsi), %rsi
+	movq	%rsi, -8(%rbp)
+	movq	%rdi, -88(%rbp)         ## 8-byte Spill
+	movq	%rcx, %rdi
+	movq	%rax, %rsi
+	callq	_memcpy
+	movl	$0, -12(%rbp)
+	movl	$0, -16(%rbp)
+	movl	$0, -68(%rbp)
+	movl	$0, -72(%rbp)
+	movl	$0, -76(%rbp)
+	movl	$0, -80(%rbp)
+	movq	-88(%rbp), %rdi         ## 8-byte Reload
+	movb	$0, %al
+	callq	_printf
+	leaq	L_.str(%rip), %rdi
+	movl	%eax, -92(%rbp)         ## 4-byte Spill
+	movb	$0, %al
+	callq	_printf
+	leaq	L_.str1(%rip), %rdi
+	leaq	-12(%rbp), %rsi
+	movl	%eax, -96(%rbp)         ## 4-byte Spill
+	movb	$0, %al
+	callq	_scanf
+	leaq	L_.str1(%rip), %rdi
+	leaq	-16(%rbp), %rsi
+	movl	%eax, -100(%rbp)        ## 4-byte Spill
+	movb	$0, %al
+	callq	_scanf
+	leaq	L_.str1(%rip), %rdi
+	leaq	-68(%rbp), %rsi
+	movl	%eax, -104(%rbp)        ## 4-byte Spill
+	movb	$0, %al
+	callq	_scanf
+	movl	$1, -76(%rbp)
+	movl	%eax, -108(%rbp)        ## 4-byte Spill
+LBB0_1:                                 ## =>This Loop Header: Depth=1
+                                        ##     Child Loop BB0_4 Depth 2
+	cmpl	$12, -76(%rbp)
+	jg	LBB0_10
+## BB#2:                                ##   in Loop: Header=BB0_1 Depth=1
+	movl	-76(%rbp), %eax
+	cmpl	-16(%rbp), %eax
+	jne	LBB0_8
+## BB#3:                                ##   in Loop: Header=BB0_1 Depth=1
+	movl	$0, -80(%rbp)
+LBB0_4:                                 ##   Parent Loop BB0_1 Depth=1
+                                        ## =>  This Inner Loop Header: Depth=2
+	movl	-80(%rbp), %eax
+	movl	-16(%rbp), %ecx
+	subl	$1, %ecx
+	cmpl	%ecx, %eax
+	jge	LBB0_7
+## BB#5:                                ##   in Loop: Header=BB0_4 Depth=2
+	movl	-72(%rbp), %eax
+	movslq	-80(%rbp), %rcx
+	addl	-64(%rbp,%rcx,4), %eax
+	movl	%eax, -72(%rbp)
+## BB#6:                                ##   in Loop: Header=BB0_4 Depth=2
+	movl	-80(%rbp), %eax
+	addl	$1, %eax
+	movl	%eax, -80(%rbp)
+	jmp	LBB0_4
+LBB0_7:                                 ##   in Loop: Header=BB0_1 Depth=1
+	jmp	LBB0_8
+LBB0_8:                                 ##   in Loop: Header=BB0_1 Depth=1
+	jmp	LBB0_9
+LBB0_9:                                 ##   in Loop: Header=BB0_1 Depth=1
+	movl	-76(%rbp), %eax
+	addl	$1, %eax
+	movl	%eax, -76(%rbp)
+	jmp	LBB0_1
+LBB0_10:
+	movl	$4, %eax
+	movl	-12(%rbp), %ecx
+	movl	%eax, -112(%rbp)        ## 4-byte Spill
+	movl	%ecx, %eax
+	cltd
+	movl	-112(%rbp), %ecx        ## 4-byte Reload
+	idivl	%ecx
+	cmpl	$0, %edx
+	jne	LBB0_12
+## BB#11:
+	movl	$100, %eax
+	movl	-12(%rbp), %ecx
+	movl	%eax, -116(%rbp)        ## 4-byte Spill
+	movl	%ecx, %eax
+	cltd
+	movl	-116(%rbp), %ecx        ## 4-byte Reload
+	idivl	%ecx
+	cmpl	$0, %edx
+	jne	LBB0_13
+LBB0_12:
+	movl	$400, %eax              ## imm = 0x190
+	movl	-12(%rbp), %ecx
+	movl	%eax, -120(%rbp)        ## 4-byte Spill
+	movl	%ecx, %eax
+	cltd
+	movl	-120(%rbp), %ecx        ## 4-byte Reload
+	idivl	%ecx
+	cmpl	$0, %edx
+	jne	LBB0_14
+LBB0_13:
+	leaq	L_.str2(%rip), %rdi
+	movl	-72(%rbp), %eax
+	addl	$1, %eax
+	movl	%eax, -72(%rbp)
+	movl	-72(%rbp), %eax
+	addl	-68(%rbp), %eax
+	movl	%eax, %esi
+	movb	$0, %al
+	callq	_printf
+	movl	%eax, -124(%rbp)        ## 4-byte Spill
+	jmp	LBB0_15
+LBB0_14:
+	leaq	L_.str2(%rip), %rdi
+	movl	-72(%rbp), %eax
+	addl	-68(%rbp), %eax
+	movl	%eax, %esi
+	movb	$0, %al
+	callq	_printf
+	movl	%eax, -128(%rbp)        ## 4-byte Spill
+LBB0_15:
+	movq	___stack_chk_guard@GOTPCREL(%rip), %rax
+	movq	(%rax), %rax
+	cmpq	-8(%rbp), %rax
+	jne	LBB0_17
+## BB#16:                               ## %SP_return
+	addq	$128, %rsp
+	popq	%rbp
+	ret
+LBB0_17:                                ## %CallStackCheckFailBlk
+	callq	___stack_chk_fail
+	.cfi_endproc
+
+	.section	__TEXT,__const
+	.align	4                       ## @main.month_check
+L_main.month_check:
+	.long	31                      ## 0x1f
+	.long	28                      ## 0x1c
+	.long	31                      ## 0x1f
+	.long	30                      ## 0x1e
+	.long	31                      ## 0x1f
+	.long	30                      ## 0x1e
+	.long	31                      ## 0x1f
+	.long	31                      ## 0x1f
+	.long	30                      ## 0x1e
+	.long	31                      ## 0x1f
+	.long	30                      ## 0x1e
+	.long	31                      ## 0x1f
+
+	.section	__TEXT,__cstring,cstring_literals
+L_.str:                                 ## @.str
+	.space	1
+
+L_.str1:                                ## @.str1
+	.asciz	"%d"
+
+L_.str2:                                ## @.str2
+	.asciz	"%d\n"
+
+
+.subsections_via_symbols

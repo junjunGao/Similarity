@@ -1,0 +1,306 @@
+	.section	__TEXT,__text,regular,pure_instructions
+	.globl	_IsSuShu
+	.align	4, 0x90
+_IsSuShu:                               ## @IsSuShu
+	.cfi_startproc
+## BB#0:
+	pushq	%rbp
+Ltmp2:
+	.cfi_def_cfa_offset 16
+Ltmp3:
+	.cfi_offset %rbp, -16
+	movq	%rsp, %rbp
+Ltmp4:
+	.cfi_def_cfa_register %rbp
+	movl	%edi, -8(%rbp)
+	movl	$2, -12(%rbp)
+LBB0_1:                                 ## =>This Inner Loop Header: Depth=1
+	movb	$0, %al
+	movl	-8(%rbp), %ecx
+	movb	%al, -13(%rbp)          ## 1-byte Spill
+	movl	%ecx, %eax
+	cltd
+	idivl	-12(%rbp)
+	cmpl	$0, %edx
+	movb	-13(%rbp), %sil         ## 1-byte Reload
+	movb	%sil, -14(%rbp)         ## 1-byte Spill
+	je	LBB0_3
+## BB#2:                                ##   in Loop: Header=BB0_1 Depth=1
+	cvtsi2sdl	-12(%rbp), %xmm0
+	cvtsi2sdl	-8(%rbp), %xmm1
+	sqrtsd	%xmm1, %xmm1
+	ucomisd	%xmm0, %xmm1
+	setae	%al
+	movb	%al, -14(%rbp)          ## 1-byte Spill
+LBB0_3:                                 ##   in Loop: Header=BB0_1 Depth=1
+	movb	-14(%rbp), %al          ## 1-byte Reload
+	testb	$1, %al
+	jne	LBB0_4
+	jmp	LBB0_5
+LBB0_4:                                 ##   in Loop: Header=BB0_1 Depth=1
+	movl	-12(%rbp), %eax
+	addl	$1, %eax
+	movl	%eax, -12(%rbp)
+	jmp	LBB0_1
+LBB0_5:
+	cmpl	$1, -8(%rbp)
+	je	LBB0_7
+## BB#6:
+	cvtsi2sdl	-12(%rbp), %xmm0
+	cvtsi2sdl	-8(%rbp), %xmm1
+	sqrtsd	%xmm1, %xmm1
+	ucomisd	%xmm0, %xmm1
+	jb	LBB0_8
+LBB0_7:
+	movl	$0, -4(%rbp)
+	jmp	LBB0_9
+LBB0_8:
+	movl	$1, -4(%rbp)
+LBB0_9:
+	movl	-4(%rbp), %eax
+	popq	%rbp
+	ret
+	.cfi_endproc
+
+	.globl	_IsLeapYear
+	.align	4, 0x90
+_IsLeapYear:                            ## @IsLeapYear
+	.cfi_startproc
+## BB#0:
+	pushq	%rbp
+Ltmp7:
+	.cfi_def_cfa_offset 16
+Ltmp8:
+	.cfi_offset %rbp, -16
+	movq	%rsp, %rbp
+Ltmp9:
+	.cfi_def_cfa_register %rbp
+	movl	$400, %eax              ## imm = 0x190
+	movl	%edi, -8(%rbp)
+	movl	-8(%rbp), %edi
+	movl	%eax, -12(%rbp)         ## 4-byte Spill
+	movl	%edi, %eax
+	cltd
+	movl	-12(%rbp), %edi         ## 4-byte Reload
+	idivl	%edi
+	cmpl	$0, %edx
+	je	LBB1_3
+## BB#1:
+	movl	$100, %eax
+	movl	-8(%rbp), %ecx
+	movl	%eax, -16(%rbp)         ## 4-byte Spill
+	movl	%ecx, %eax
+	cltd
+	movl	-16(%rbp), %ecx         ## 4-byte Reload
+	idivl	%ecx
+	cmpl	$0, %edx
+	je	LBB1_4
+## BB#2:
+	movl	$4, %eax
+	movl	-8(%rbp), %ecx
+	movl	%eax, -20(%rbp)         ## 4-byte Spill
+	movl	%ecx, %eax
+	cltd
+	movl	-20(%rbp), %ecx         ## 4-byte Reload
+	idivl	%ecx
+	cmpl	$0, %edx
+	jne	LBB1_4
+LBB1_3:
+	movl	$1, -4(%rbp)
+	jmp	LBB1_5
+LBB1_4:
+	movl	$0, -4(%rbp)
+LBB1_5:
+	movl	-4(%rbp), %eax
+	popq	%rbp
+	ret
+	.cfi_endproc
+
+	.globl	_NextDay
+	.align	4, 0x90
+_NextDay:                               ## @NextDay
+	.cfi_startproc
+## BB#0:
+	pushq	%rbp
+Ltmp12:
+	.cfi_def_cfa_offset 16
+Ltmp13:
+	.cfi_offset %rbp, -16
+	movq	%rsp, %rbp
+Ltmp14:
+	.cfi_def_cfa_register %rbp
+	subq	$96, %rsp
+	leaq	L_NextDay.month_data(%rip), %rax
+	movabsq	$48, %rcx
+	leaq	-80(%rbp), %r8
+	movq	___stack_chk_guard@GOTPCREL(%rip), %r9
+	movq	(%r9), %r9
+	movq	%r9, -8(%rbp)
+	movl	%edi, -12(%rbp)
+	movl	%esi, -16(%rbp)
+	movl	%edx, -20(%rbp)
+	movq	%r8, %rdi
+	movq	%rax, %rsi
+	movq	%rcx, %rdx
+	callq	_memcpy
+	cmpl	$12, -16(%rbp)
+	jne	LBB2_3
+## BB#1:
+	cmpl	$31, -20(%rbp)
+	jne	LBB2_3
+## BB#2:
+	movl	-12(%rbp), %eax
+	addl	$1, %eax
+	movl	%eax, -12(%rbp)
+	movl	$1, -16(%rbp)
+	movl	$0, -20(%rbp)
+LBB2_3:
+	movl	-12(%rbp), %edi
+	callq	_IsLeapYear
+	cmpl	$1, %eax
+	jne	LBB2_5
+## BB#4:
+	movl	$29, -76(%rbp)
+LBB2_5:
+	movl	-16(%rbp), %eax
+	subl	$1, %eax
+	movslq	%eax, %rcx
+	movl	-80(%rbp,%rcx,4), %eax
+	cmpl	-20(%rbp), %eax
+	jne	LBB2_7
+## BB#6:
+	movl	-16(%rbp), %eax
+	addl	$1, %eax
+	movl	%eax, -16(%rbp)
+	movl	$1, -20(%rbp)
+	jmp	LBB2_8
+LBB2_7:
+	movl	-20(%rbp), %eax
+	addl	$1, %eax
+	movl	%eax, -20(%rbp)
+LBB2_8:
+	movq	___stack_chk_guard@GOTPCREL(%rip), %rax
+	imull	$10000, -12(%rbp), %ecx ## imm = 0x2710
+	imull	$100, -16(%rbp), %edx
+	addl	%edx, %ecx
+	addl	-20(%rbp), %ecx
+	movl	%ecx, -84(%rbp)
+	movl	-84(%rbp), %ecx
+	movq	(%rax), %rax
+	cmpq	-8(%rbp), %rax
+	movl	%ecx, -88(%rbp)         ## 4-byte Spill
+	jne	LBB2_10
+## BB#9:                                ## %SP_return
+	movl	-88(%rbp), %eax         ## 4-byte Reload
+	addq	$96, %rsp
+	popq	%rbp
+	ret
+LBB2_10:                                ## %CallStackCheckFailBlk
+	callq	___stack_chk_fail
+	.cfi_endproc
+
+	.globl	_main
+	.align	4, 0x90
+_main:                                  ## @main
+	.cfi_startproc
+## BB#0:
+	pushq	%rbp
+Ltmp17:
+	.cfi_def_cfa_offset 16
+Ltmp18:
+	.cfi_offset %rbp, -16
+	movq	%rsp, %rbp
+Ltmp19:
+	.cfi_def_cfa_register %rbp
+	subq	$64, %rsp
+	leaq	L_.str(%rip), %rdi
+	leaq	-20(%rbp), %rsi
+	leaq	-24(%rbp), %rdx
+	leaq	-28(%rbp), %rcx
+	movl	$0, -4(%rbp)
+	movl	$0, -52(%rbp)
+	movb	$0, %al
+	callq	_scanf
+	imull	$10000, -20(%rbp), %r8d ## imm = 0x2710
+	imull	$100, -24(%rbp), %r9d
+	addl	%r9d, %r8d
+	addl	-28(%rbp), %r8d
+	movl	%r8d, -36(%rbp)
+	imull	$10000, -20(%rbp), %r8d ## imm = 0x2710
+	addl	$100, %r8d
+	addl	$1, %r8d
+	movl	%r8d, -32(%rbp)
+	movl	%eax, -56(%rbp)         ## 4-byte Spill
+LBB3_1:                                 ## =>This Inner Loop Header: Depth=1
+	movl	-32(%rbp), %eax
+	cmpl	-36(%rbp), %eax
+	jg	LBB3_3
+## BB#2:                                ##   in Loop: Header=BB3_1 Depth=1
+	movl	$100, %eax
+	movl	$10000, %ecx            ## imm = 0x2710
+	movl	-32(%rbp), %edx
+	movl	%eax, -60(%rbp)         ## 4-byte Spill
+	movl	%edx, %eax
+	cltd
+	idivl	%ecx
+	movl	%eax, -8(%rbp)
+	movl	-32(%rbp), %eax
+	imull	$10000, -8(%rbp), %ecx  ## imm = 0x2710
+	subl	%ecx, %eax
+	cltd
+	movl	-60(%rbp), %ecx         ## 4-byte Reload
+	idivl	%ecx
+	movl	%eax, -12(%rbp)
+	movl	-32(%rbp), %eax
+	imull	$10000, -8(%rbp), %edx  ## imm = 0x2710
+	subl	%edx, %eax
+	imull	$100, -12(%rbp), %edx
+	subl	%edx, %eax
+	movl	%eax, -16(%rbp)
+	movl	-8(%rbp), %edi
+	movl	-12(%rbp), %esi
+	movl	-16(%rbp), %edx
+	callq	_NextDay
+	movl	%eax, -32(%rbp)
+	movl	-52(%rbp), %eax
+	addl	$1, %eax
+	movl	%eax, -52(%rbp)
+	jmp	LBB3_1
+LBB3_3:
+	leaq	L_.str1(%rip), %rdi
+	movl	-52(%rbp), %esi
+	movb	$0, %al
+	callq	_printf
+	movl	$0, %esi
+	movl	%eax, -64(%rbp)         ## 4-byte Spill
+	movl	%esi, %eax
+	addq	$64, %rsp
+	popq	%rbp
+	ret
+	.cfi_endproc
+
+	.section	__TEXT,__const
+	.align	4                       ## @NextDay.month_data
+L_NextDay.month_data:
+	.long	31                      ## 0x1f
+	.long	28                      ## 0x1c
+	.long	31                      ## 0x1f
+	.long	30                      ## 0x1e
+	.long	31                      ## 0x1f
+	.long	30                      ## 0x1e
+	.long	31                      ## 0x1f
+	.long	31                      ## 0x1f
+	.long	30                      ## 0x1e
+	.long	31                      ## 0x1f
+	.long	30                      ## 0x1e
+	.long	31                      ## 0x1f
+
+	.section	__TEXT,__cstring,cstring_literals
+L_.str:                                 ## @.str
+	.asciz	"%d%d%d"
+
+L_.str1:                                ## @.str1
+	.asciz	"%d"
+
+
+.subsections_via_symbols
